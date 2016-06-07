@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS book
+	(id INTEGER PRIMARY KEY, title TEXT, author TEXT, location TEXT);
