@@ -25,7 +25,10 @@ db = Database(DB_FILE, DB_SCHEMA)
 
 @app.route('/')
 def home():
-	return 'Hello world'
+
+	"""The main page, search-oriented."""
+
+	return render_template('main.html')
 
 
 @app.route('/book/<id>')

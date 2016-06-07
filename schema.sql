@@ -1,2 +1,1 @@
-CREATE TABLE IF NOT EXISTS book
-	(id INTEGER PRIMARY KEY, title TEXT, author TEXT, location TEXT);
+CREATE VIRTUAL TABLE IF NOT EXISTS books USING fts4 (title, author, location);
