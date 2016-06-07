@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Book DB - {{ title }}{% endblock title %}
+
+{% block content %}
+<h1>Edit Book</h1>
+<form action="put">
+	<label for="title-input">Title</label>
+	<input id="title-input" type="text" value="{{ title }}" />
+	<label for="author-input">Author</label>
+	<input id="author-input" type="text" value="{{ author }}" />
+	<label for="location-input">Location</label>
+	<textarea id="location-input">{{ location }}</textarea>
+</form>
+{% endblock content %}

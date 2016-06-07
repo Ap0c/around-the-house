@@ -28,13 +28,28 @@ def home():
 	return 'Hello world'
 
 
-@app.route('/<id>')
+@app.route('/book/<id>')
 def book(id):
+
+	"""Displays information about a book with a given id."""
 
 	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
 
 	if len(book_data) > 0:
 		return render_template('book.html', **book_data[0])
+	else:
+		abort(404)
+
+
+@app.route('/edit/<id>')
+def edit(id):
+
+	"""Allows the user to edit a specific book."""
+
+	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
+
+	if len(book_data) > 0:
+		return render_template('edit.html', **book_data[0])
 	else:
 		abort(404)
 
