@@ -1,6 +1,6 @@
 # ----- Imports ----- #
 
-from flask import Flask
+from flask import Flask, render_template
 import os.path
 from db import Database
 
@@ -33,7 +33,7 @@ def book(id):
 
 	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
 
-	return "Hello, I'm a book with the title {}".format(book_data[0]['title'])
+	return render_template('book.html', **book_data[0])
 
 
 # ----- Run ----- #
