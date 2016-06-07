@@ -12,7 +12,7 @@ DB_SCHEMA = os.path.join(os.path.dirname(os.path.realpath(__file__)),
 	'schema.sql')
 
 # The database file.
-DB_FILE = 'media.db'
+DB_FILE = 'books.db'
 
 # The flask app object.
 app = Flask(__name__)
@@ -31,7 +31,9 @@ def home():
 @app.route('/<id>')
 def book(id):
 
-	return "Hello, I'm a book with the id {}".format(id)
+	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
+
+	return "Hello, I'm a book with the title {}".format(book_data[0]['title'])
 
 
 # ----- Run ----- #
