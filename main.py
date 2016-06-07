@@ -1,6 +1,6 @@
 # ----- Imports ----- #
 
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 import os.path
 from db import Database
 
@@ -33,7 +33,10 @@ def book(id):
 
 	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
 
-	return render_template('book.html', **book_data[0])
+	if len(book_data) > 0:
+		return render_template('book.html', **book_data[0])
+	else:
+		abort(404)
 
 
 # ----- Run ----- #
