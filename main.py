@@ -16,6 +16,12 @@ def home():
 	return 'Hello world'
 
 
+@app.route('/<id>')
+def book(id):
+
+	return "Hello, I'm a book with the id {}".format(id)
+
+
 # ----- Run ----- #
 
 if __name__ == '__main__':
