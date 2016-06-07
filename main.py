@@ -1,6 +1,6 @@
 # ----- Imports ----- #
 
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request
 import os.path
 from db import Database
 
@@ -31,12 +31,25 @@ def home():
 	return render_template('main.html')
 
 
+@app.route('/search')
+def search():
+
+	"""Retrieves html fragment of search results."""
+
+	terms = request.args.get('terms')
+	matchstring = 'title:{} OR author:{}'.format(terms, terms)
+
+	results = db.query('SELECT * FROM books WHERE books MATCH ?', (matchstring,))
+
+	return render_template('list.html', books=results)
+
+
 @app.route('/book/<id>')
 def book(id):
 
 	"""Displays information about a book with a given id."""
 
-	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
+	book_data = db.query('SELECT * FROM books WHERE docid = ?', id)
 
 	if len(book_data) > 0:
 		return render_template('book.html', **book_data[0])
