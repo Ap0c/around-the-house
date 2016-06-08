@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<input type="search" placeholder="Search..." />
+	<form id="search-form">
+		<input type="search" id="search-field" placeholder="Search..." />
+	</form>
+	<section id="results"></section>
+	<script type="text/javascript" src="static/search.js"></script>
 {% endblock content %}
