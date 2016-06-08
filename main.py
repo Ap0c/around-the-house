@@ -38,8 +38,10 @@ def search():
 
 	terms = request.args.get('terms')
 	matchstring = 'title:{} OR author:{}'.format(terms, terms)
+	query = """SELECT docid, title, author, location FROM books
+		WHERE books MATCH ?"""
 
-	results = db.query('SELECT * FROM books WHERE books MATCH ?', (matchstring,))
+	results = db.query(query, (matchstring,))
 
 	return render_template('list.html', books=results)
 

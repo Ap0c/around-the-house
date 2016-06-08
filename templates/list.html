@@ -1,5 +1,5 @@
 <ul>
 	{% for book in books %}
-		<li>{{ book['title'] }} - {{ book['author'] }}</li>
+		<a href="/book/{{ book['docid'] }}"><li>{{ book['title'] }} - {{ book['author'] }}</li></a>
 	{% endfor %}
 </ul>
