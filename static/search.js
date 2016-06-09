@@ -49,7 +49,6 @@ function setupEvents () {
 		var url = buildUrl(searchTerms);
 
 		jsonGet(url, function (results) {
-			console.log(results);
 			resultsSection.innerHTML = results;
 		});
 

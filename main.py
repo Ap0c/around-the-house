@@ -59,12 +59,37 @@ def book(id):
 		abort(404)
 
 
+@app.route('/new_book', methods=['GET', 'POST'])
+def new_book():
+
+	"""Allows the user to add a new book."""
+
+	if request.method == 'GET':
+		return render_template('new_book.html')
+	elif request.method == 'POST':
+
+		query = 'INSERT INTO books (title, author, location) VALUES (?, ?, ?)'
+		args = (request.args.get(f) for f in ('title', 'author', 'location'))
+		db.query(query, args)
+
+
 @app.route('/edit/<id>')
 def edit(id):
 
 	"""Allows the user to edit a specific book."""
 
-	book_data = db.query('SELECT * FROM book WHERE id = ?', id)
+	# if request.method == 'POST':
+
+		
+
+	# elif request:
+
+
+
+	# else:
+
+	book_data = db.query("""SELECT docid, title, author, location FROM books
+		WHERE docid = ?""", id)
 
 	if len(book_data) > 0:
 		return render_template('edit.html', **book_data[0])
