@@ -69,24 +69,16 @@ def new_book():
 	elif request.method == 'POST':
 
 		query = 'INSERT INTO books (title, author, location) VALUES (?, ?, ?)'
-		args = (request.args.get(f) for f in ('title', 'author', 'location'))
-		db.query(query, args)
+		args = [request.args.get(f) for f in ('title', 'author', 'location')]
+		id = db.query(query, tuple(args))
+
+	return str(id), 201
 
 
 @app.route('/edit/<id>')
 def edit(id):
 
 	"""Allows the user to edit a specific book."""
-
-	# if request.method == 'POST':
-
-		
-
-	# elif request:
-
-
-
-	# else:
 
 	book_data = db.query("""SELECT docid, title, author, location FROM books
 		WHERE docid = ?""", id)
