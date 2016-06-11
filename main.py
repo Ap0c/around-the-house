@@ -51,7 +51,8 @@ def book(id):
 
 	"""Displays information about a book with a given id."""
 
-	book_data = db.query('SELECT * FROM books WHERE docid=?', id)
+	query = 'SELECT docid, title, author, location FROM books WHERE docid=?'
+	book_data = db.query(query, id)
 
 	if len(book_data) > 0:
 		return render_template('book.html', **book_data[0])
