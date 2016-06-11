@@ -51,7 +51,7 @@ def book(id):
 
 	"""Displays information about a book with a given id."""
 
-	book_data = db.query('SELECT * FROM books WHERE docid = ?', id)
+	book_data = db.query('SELECT * FROM books WHERE docid=?', id)
 
 	if len(book_data) > 0:
 		return render_template('book.html', **book_data[0])
@@ -72,21 +72,34 @@ def new_book():
 		args = [request.args.get(f) for f in ('title', 'author', 'location')]
 		id = db.query(query, tuple(args))
 
-	return str(id), 201
+		return str(id), 201
 
 
-@app.route('/edit/<id>')
+@app.route('/edit/<id>', methods=['GET', 'PUT'])
 def edit(id):
 
 	"""Allows the user to edit a specific book."""
 
-	book_data = db.query("""SELECT docid, title, author, location FROM books
-		WHERE docid = ?""", id)
+	if request.method == 'GET':
 
-	if len(book_data) > 0:
-		return render_template('edit.html', **book_data[0])
-	else:
-		abort(404)
+		book_data = db.query("""SELECT docid, title, author, location FROM books
+			WHERE docid = ?""", id)
+
+		if len(book_data) > 0:
+			return render_template('edit.html', **book_data[0])
+		else:
+			abort(404)
+
+	elif request.method == 'PUT':
+
+		req_args = request.args
+
+		query = 'UPDATE books SET title=?, author=?, location=? WHERE docid=?'
+		args = [req_args.get(f) for f in ('title', 'author', 'location')]
+		args.append(id)
+		db.query(query, tuple(args))
+
+		return id, 200
 
 
 # ----- Run ----- #

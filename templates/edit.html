@@ -3,12 +3,15 @@
 
 {% block content %}
 <h1>Edit Book</h1>
-<form action="put">
+<form id="book-form">
 	<label for="title-input">Title</label>
-	<input id="title-input" type="text" value="{{ title }}" />
+	<input id="title-input" type="text" name="title" value="{{ title }}" />
 	<label for="author-input">Author</label>
-	<input id="author-input" type="text" value="{{ author }}" />
+	<input id="author-input" type="text" name="author" value="{{ author }}" />
 	<label for="location-input">Location</label>
-	<textarea id="location-input">{{ location }}</textarea>
+	<textarea id="location-input" name="location">{{ location }}</textarea>
+	<input type="hidden" name="id" value="{{ docid }}" />
+	<input type="submit" value="Update" />
 </form>
+<script type="text/javascript" src="/static/edit.js"></script>
 {% endblock content %}
