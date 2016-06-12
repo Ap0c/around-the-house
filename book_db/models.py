@@ -37,7 +37,7 @@ def search(terms):
 
 	"""Searches and returns all books matching given search terms."""
 
-	matchstring = 'title:{0} OR author:{0}'.format(terms)
+	matchstring = 'title:*{0}* OR author:*{0}*'.format(terms)
 	query = 'SELECT docid, * FROM books WHERE books MATCH ?'
 
 	return db.query(query, (matchstring,))
