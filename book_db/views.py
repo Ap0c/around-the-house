@@ -1,8 +1,9 @@
 # ----- Imports ----- #
 
-from flask import Flask, render_template, abort, request
+from flask import render_template, abort, request
 import os.path
-from db import Database
+from .db import Database
+from book_db import app
 
 
 # ----- Setup ----- #
@@ -14,8 +15,7 @@ DB_SCHEMA = os.path.join(os.path.dirname(os.path.realpath(__file__)),
 # The database file.
 DB_FILE = 'books.db'
 
-# The flask app object.
-app = Flask(__name__)
+
 
 # Handles database connections and queries.
 db = Database(DB_FILE, DB_SCHEMA)
@@ -101,9 +101,3 @@ def edit(id):
 		db.query(query, tuple(args))
 
 		return id, 200
-
-
-# ----- Run ----- #
-
-if __name__ == '__main__':
-	app.run(debug=True)
