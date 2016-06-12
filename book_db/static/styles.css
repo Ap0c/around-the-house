@@ -1,0 +1,82 @@
+/* ----- General ----- */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	color: coral;
+}
+
+
+/* ----- Nav ----- */
+
+nav {
+	width: 100%;
+	display: flex;
+	padding: 1em 0;
+	font-size: large;
+	color: inherit;
+}
+
+nav > a {
+	flex: 1 0 auto;
+	text-align: center;
+	text-decoration: none;
+}
+
+nav > a:visited {
+	color: inherit;
+}
+
+
+/* ----- Main ----- */
+
+main {
+	margin: 0 5%;
+}
+
+
+/* ----- Search ----- */
+
+input[type=search] {
+	width: 100%;
+	-webkit-appearance: textfield;
+	font-size: x-large;
+	color: inherit;
+	border: 2px solid coral;
+}
+
+input[type=search]:focus {
+	outline: none;
+}
+
+
+/* ----- Search Results ----- */
+
+.list {
+	list-style-type: none;
+	margin: 2em 0;
+	padding: 0;
+	line-height: 1.5em;
+	color: cornflowerblue;
+}
+
+.list li {
+	border: 1px solid cornflowerblue;
+	padding: 0.5em 0.8em;
+	margin: 0.5em 0;
+}
+
+.list li:hover {
+	background-color: cornflowerblue;
+	color: white;
+}
+
+.list a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.list a:visited {
+	color: inherit;
+}
