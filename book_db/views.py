@@ -52,11 +52,10 @@ def new_book():
 		return render_template('new_book.html')
 	elif request.method == 'POST':
 
-		query = 'INSERT INTO books (title, author, location) VALUES (?, ?, ?)'
-		args = [request.args.get(f) for f in ('title', 'author', 'location')]
-		id = db.query(query, tuple(args))
+		fields = [request.args.get(f) for f in ('title', 'author', 'location')]
+		book_id = models.new_book(*fields)
 
-		return str(id), 201
+		return str(book_id), 201
 
 
 @app.route('/edit/<id>', methods=['GET', 'PUT'])

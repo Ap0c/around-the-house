@@ -41,3 +41,13 @@ def search(terms):
 	query = 'SELECT docid, * FROM books WHERE books MATCH ?'
 
 	return db.query(query, (matchstring,))
+
+
+def new_book(title, author, location):
+
+	"""Adds a new book to the database and returns its id."""
+
+	query = 'INSERT INTO books (title, author, location) VALUES (?, ?, ?)'
+
+	return db.query(query, (title, author, location))
+
