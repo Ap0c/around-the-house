@@ -7,7 +7,7 @@ var form = document.getElementById('search-form');
 
 // ----- Functions ----- //
 
-// Posts JSON data to a specified route, and fires callback with result.
+// Gets JSON data from a specified route, and fires callback with result.
 function jsonGet (route, callback) {
 
 	var ajaxRequest = new XMLHttpRequest();

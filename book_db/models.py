@@ -59,3 +59,10 @@ def edit(id, title, author, location):
 	query = 'UPDATE books SET title=?, author=?, location=? WHERE docid=?'
 
 	db.query(query, (title, author, location, id))
+
+
+def delete(id):
+
+	"""Deletes a book by id."""
+
+	db.query('DELETE FROM books WHERE docid=?', (id,))

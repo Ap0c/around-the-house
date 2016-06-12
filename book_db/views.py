@@ -78,3 +78,13 @@ def edit(id):
 		models.edit(id, *fields)
 
 		return id, 200
+
+
+@app.route('/delete/<id>', methods=['DELETE'])
+def delete(id):
+
+	"""Deletes a given book by id."""
+
+	deleted = models.delete(id)
+
+	return '', 204
