@@ -2,23 +2,10 @@
 
 from flask import render_template, abort, request
 import os.path
-from .db import Database
+
 from book_db import app
-
-
-# ----- Setup ----- #
-
-# The database schema file.
-DB_SCHEMA = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-	'schema.sql')
-
-# The database file.
-DB_FILE = 'books.db'
-
-
-
-# Handles database connections and queries.
-db = Database(DB_FILE, DB_SCHEMA)
+from .db import Database
+import book_db.models as models
 
 
 # ----- Routes ----- #
@@ -51,10 +38,9 @@ def book(id):
 
 	"""Displays information about a book with a given id."""
 
-	query = 'SELECT docid, title, author, location FROM books WHERE docid=?'
-	book_data = db.query(query, id)
+	book_data = models.book(id)
 
-	if len(book_data) > 0:
+	if book_data:
 		return render_template('book.html', **book_data[0])
 	else:
 		abort(404)
