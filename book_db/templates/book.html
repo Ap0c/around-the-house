@@ -3,9 +3,11 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
-<h3>{{ author }}</h3>
+<h3>by {{ author }}</h3>
 <p>{{ location }}</p>
-<a href="/edit/{{ docid }}">Edit</a>
-<a href="/delete/{{ docid }}" id="delete-link">Delete</a>
+<section class="book-buttons">
+	<a href="/edit/{{ docid }}">Edit</a>
+	<a href="/delete/{{ docid }}" id="delete-link">Delete</a>
+</section>
 <script type="text/javascript" src="/static/delete.js"></script>
 {% endblock content %}

@@ -7,6 +7,11 @@ html, body {
 	color: coral;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 
 /* ----- Nav ----- */
 
@@ -22,7 +27,6 @@ nav > a {
 	flex: 1 0 auto;
 	text-align: center;
 	padding: 0.3em 0;
-	text-decoration: none;
 }
 
 nav > a:hover {
@@ -96,4 +100,30 @@ input[type=search]::-webkit-search-cancel-button:after {
 
 .list a:visited {
 	color: inherit;
+}
+
+
+/* ----- Book Page ----- */
+
+main p {
+	margin: 2em 0 3em;
+}
+
+h1, h3 {
+	font-weight: normal;
+}
+
+h3 {
+	margin-top: 1.5em;
+	color: cornflowerblue;
+}
+
+.book-buttons a {
+	background-color: cornflowerblue;
+	padding: 0.5em;
+	color: white;
+}
+
+.book-buttons a:hover {
+	background-color: coral;
 }
