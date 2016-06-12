@@ -25,13 +25,9 @@ def search():
 	"""Retrieves html fragment of search results."""
 
 	terms = request.args.get('terms')
-	matchstring = 'title:{} OR author:{}'.format(terms, terms)
-	query = """SELECT docid, title, author, location FROM books
-		WHERE books MATCH ?"""
+	books = models.search(terms)
 
-	results = db.query(query, (matchstring,))
-
-	return render_template('list.html', books=results)
+	return render_template('list.html', books=books)
 
 
 @app.route('/book/<id>')
