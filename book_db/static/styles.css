@@ -49,6 +49,15 @@ main {
 	margin: 3% 5% 0;
 }
 
+@media (min-width: 640px) {
+
+	main {
+		width: 40em;
+		margin: 2em auto 0;
+	}
+
+}
+
 
 /* ----- Search ----- */
 
@@ -99,6 +108,10 @@ input[type=search]::-webkit-search-cancel-button:after {
 	color: white;
 }
 
+.list li:hover .book-author {
+	color: white;
+}
+
 .list a {
 	text-decoration: none;
 	color: inherit;
@@ -114,26 +127,31 @@ input[type=search]::-webkit-search-cancel-button:after {
 
 .list .book-author {
 	margin-left: 1em;
+	margin-top: 0.3em;
+	color: coral;
 }
 
 
 /* ----- Book Page ----- */
 
 main p {
-	margin: 2em 0 3em;
+	margin: 2em 0 2.5em;
+	color: cornflowerblue;
 }
 
-h1, h3 {
+h1 {
 	font-weight: normal;
+	color: cornflowerblue
 }
 
 h3 {
 	margin-top: 1.5em;
-	color: cornflowerblue;
+	font-weight: normal;
+	color: coral;
 }
 
 .book-buttons a {
-	background-color: cornflowerblue;
+	background-color: coral;
 	padding: 0.5em;
 	color: white;
 }
