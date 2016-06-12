@@ -1,11 +1,12 @@
 # ----- Imports ----- #
 
 from flask import render_template, abort, request
-import os.path
 
 from book_db import app
 from .db import Database
 import book_db.models as models
+
+db = models.db
 
 
 # ----- Routes ----- #
@@ -41,7 +42,7 @@ def book(id):
 	book_data = models.book(id)
 
 	if book_data:
-		return render_template('book.html', **book_data[0])
+		return render_template('book.html', **book_data)
 	else:
 		abort(404)
 
