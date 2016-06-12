@@ -25,7 +25,7 @@ def book(id):
 	"""Retrieves a book with given id."""
 
 	query = 'SELECT docid, title, author, location FROM books WHERE docid=?'
-	book_data = db.query(query, id)
+	book_data = db.query(query, (id,))
 
 	if len(book_data) > 0:
 		return book_data[0]
