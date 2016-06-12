@@ -13,9 +13,10 @@ html, body {
 nav {
 	width: 100%;
 	display: flex;
-	padding: 1em 0;
-	font-size: large;
-	color: inherit;
+	padding: 0.5em 0;
+	font-size: x-large;
+	color: white;
+	background-color: cornflowerblue;
 }
 
 nav > a {
@@ -32,7 +33,7 @@ nav > a:visited {
 /* ----- Main ----- */
 
 main {
-	margin: 0 5%;
+	margin: 3% 5% 0;
 }
 
 
@@ -43,6 +44,7 @@ input[type=search] {
 	-webkit-appearance: textfield;
 	font-size: x-large;
 	color: inherit;
+	padding: 0.3em 0;
 	border: 2px solid coral;
 }
 
@@ -59,6 +61,7 @@ input[type=search]:focus {
 	padding: 0;
 	line-height: 1.5em;
 	color: cornflowerblue;
+	font-size: large;
 }
 
 .list li {
