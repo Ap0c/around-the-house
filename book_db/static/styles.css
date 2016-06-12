@@ -55,7 +55,7 @@ main {
 input[type=search] {
 	width: 100%;
 	-webkit-appearance: textfield;
-	font-size: x-large;
+	font-size: large;
 	color: inherit;
 	padding: 0.3em 0 0.3em 0;
 	border: 2px solid coral;
@@ -89,7 +89,6 @@ input[type=search]::-webkit-search-cancel-button:after {
 }
 
 .list li {
-	border: 1px solid cornflowerblue;
 	border-radius: 0.2em;
 	padding: 0.5em 0.8em;
 	margin: 0.5em 0;
@@ -107,6 +106,14 @@ input[type=search]::-webkit-search-cancel-button:after {
 
 .list a:visited {
 	color: inherit;
+}
+
+.list .book-title {
+	font-weight: bold;
+}
+
+.list .book-author {
+	margin-left: 1em;
 }
 
 
