@@ -65,21 +65,16 @@ def edit(id):
 
 	if request.method == 'GET':
 
-		book_data = db.query("""SELECT docid, title, author, location FROM books
-			WHERE docid = ?""", id)
+		book_data = models.book(id)
 
-		if len(book_data) > 0:
-			return render_template('edit.html', **book_data[0])
+		if book_data:
+			return render_template('edit.html', **book_data)
 		else:
 			abort(404)
 
 	elif request.method == 'PUT':
 
-		req_args = request.args
-
-		query = 'UPDATE books SET title=?, author=?, location=? WHERE docid=?'
-		args = [req_args.get(f) for f in ('title', 'author', 'location')]
-		args.append(id)
-		db.query(query, tuple(args))
+		fields = [request.args.get(f) for f in ('title', 'author', 'location')]
+		models.edit(id, *fields)
 
 		return id, 200

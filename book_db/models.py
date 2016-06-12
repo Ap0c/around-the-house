@@ -51,3 +51,11 @@ def new_book(title, author, location):
 
 	return db.query(query, (title, author, location))
 
+
+def edit(id, title, author, location):
+
+	"""Updates the data on a given book by id."""
+
+	query = 'UPDATE books SET title=?, author=?, location=? WHERE docid=?'
+
+	db.query(query, (title, author, location, id))
