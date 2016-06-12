@@ -127,3 +127,28 @@ h3 {
 .book-buttons a:hover {
 	background-color: coral;
 }
+
+
+/* ----- Edit/New Book Pages ----- */
+
+label {
+	display: block;
+	margin: 0.5em 0;
+	color: cornflowerblue;
+}
+
+input[type=text] {
+	width: 100%;
+	border: 1px solid coral;
+	font-size: medium;
+	color: inherit;
+}
+
+input[type=submit] {
+	margin-top: 1em;
+	padding: 0.5em;
+	background-color: cornflowerblue;
+	border: none;
+	color: white;
+	font-size: medium;
+}
