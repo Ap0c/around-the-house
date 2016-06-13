@@ -86,3 +86,13 @@ class TestModels(unittest.TestCase):
 		self.assertEqual(book['title'], title)
 		self.assertEqual(book['author'], author)
 		self.assertEqual(book['location'], location)
+
+	def test_delete(self):
+
+		"""Checks a book is deleted correctly."""
+
+		book_id = mock_book()[0]
+		models.delete(book_id)
+
+		book = models.book(book_id)
+		self.assertIsNone(book)
