@@ -2,3 +2,5 @@
 *.pyc
 book-env/*
 *.db
+cover/*
+.coverage

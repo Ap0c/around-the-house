@@ -20,14 +20,6 @@ db = Database(DB_FILE, DB_SCHEMA)
 
 # ----- Model Functions ----- #
 
-def change_db(new_db):
-
-	"""Changes the default database file based on given path, for testing."""
-
-	global db
-	db = Database(new_db, DB_SCHEMA)
-
-
 def book(id):
 
 	"""Retrieves a book with given id."""
