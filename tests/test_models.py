@@ -72,3 +72,17 @@ class TestModels(unittest.TestCase):
 		book = models.search('Made')[0]
 		self.assertEqual(book['docid'], book_id)
 
+	def test_edit(self):
+
+		"""Makes sure a book is edited correctly."""
+
+		book_id, title, author, location = mock_book()
+
+		title, author, location = 'Book Two', 'Author Two', 'Location Two'
+		models.edit(book_id, title, author, location)
+
+		book = models.book(book_id)
+
+		self.assertEqual(book['title'], title)
+		self.assertEqual(book['author'], author)
+		self.assertEqual(book['location'], location)
