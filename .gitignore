@@ -4,3 +4,4 @@ book-env/*
 *.db
 cover/*
 .coverage
+db.json
