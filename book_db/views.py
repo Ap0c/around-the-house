@@ -82,6 +82,6 @@ def delete(id):
 
 	"""Deletes a given book by id."""
 
-	deleted = models.delete(id)
+	models.delete(id)
 
 	return '', 204

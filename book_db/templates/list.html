@@ -1,6 +1,6 @@
 <ul class="list">
 	{% for book in books %}
-		<a href="/book/{{ book['docid'] }}">
+		<a href="/book/{{ book['id'] }}">
 			<li>
 				<div class="book-title">{{ book['title'] }}</div>
 				<div class="book-author">by {{ book['author'] }}</div>
