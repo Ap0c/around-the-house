@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Book DB - Add{% endblock title %}
+{% block title %}Around the House - Add{% endblock title %}
 
 {% block content %}
-<h1>Add A Book</h1>
-<form id="book-form">
+<h1>Add An Item</h1>
+<form id="item-form">
 	<label for="title-input">Title</label>
 	<input id="title-input" name="title" type="text" />
 	<label for="author-input">Author</label>
@@ -12,5 +12,5 @@
 	<input id="location-input" name="location" type="text" />
 	<input type="submit" value="Add" />
 </form>
-<script type="text/javascript" src="/static/new_book.js"></script>
+<script type="text/javascript" src="/static/new_item.js"></script>
 {% endblock content %}

@@ -108,7 +108,7 @@ input[type=search]::-webkit-search-cancel-button:after {
 	color: white;
 }
 
-.list li:hover .book-author {
+.list li:hover .item-author {
 	color: white;
 }
 
@@ -121,18 +121,18 @@ input[type=search]::-webkit-search-cancel-button:after {
 	color: inherit;
 }
 
-.list .book-title {
+.list .item-title {
 	font-weight: bold;
 }
 
-.list .book-author {
+.list .item-author {
 	margin-left: 1em;
 	margin-top: 0.3em;
 	color: coral;
 }
 
 
-/* ----- Book Page ----- */
+/* ----- Item Page ----- */
 
 main p {
 	margin: 2em 0 2.5em;
@@ -150,18 +150,18 @@ h3 {
 	color: coral;
 }
 
-.book-buttons a {
+.item-buttons a {
 	background-color: coral;
 	padding: 0.5em;
 	color: white;
 }
 
-.book-buttons a:hover {
+.item-buttons a:hover {
 	background-color: coral;
 }
 
 
-/* ----- Edit/New Book Pages ----- */
+/* ----- Edit/New Item Pages ----- */
 
 label {
 	display: block;

@@ -8,4 +8,4 @@ from flask import Flask
 # The flask app object.
 app = Flask(__name__)
 
-import book_db.views
+import around_the_house.views

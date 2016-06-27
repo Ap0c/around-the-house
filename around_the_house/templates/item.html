@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Book DB - {{ title }}{% endblock title %}
+{% block title %}Around the House - {{ title }}{% endblock title %}
 
 {% block content %}
 <h1>{{ title }}</h1>
 <h3>by {{ author }}</h3>
 <p>{{ location }}</p>
-<section class="book-buttons">
+<section class="item-buttons">
 	<a href="/edit/{{ id }}">Edit</a>
 	<a href="/delete/{{ id }}" id="delete-link">Delete</a>
 </section>

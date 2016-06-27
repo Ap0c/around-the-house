@@ -1,7 +1,7 @@
 // ----- Setup ----- //
 
 var errMessage = document.getElementById('err-message');
-var form = document.getElementById('book-form');
+var form = document.getElementById('item-form');
 
 
 // ----- Functions ----- //
@@ -15,7 +15,7 @@ function jsonPost (route, callback) {
 
 		if (ajaxRequest.readyState == XMLHttpRequest.DONE) {
 
-			if (ajaxRequest.status === 200) {
+			if (ajaxRequest.status === 201) {
 				callback(true, ajaxRequest.responseText);
 			} else {
 				callback(err);
@@ -25,22 +25,22 @@ function jsonPost (route, callback) {
 
 	};
 
-	ajaxRequest.open('PUT', route);
+	ajaxRequest.open('POST', route);
 	ajaxRequest.send();
 
 }
 
-// Retrieves the book data from the form.
+// Retrieves the item data from the form.
 function getFields () {
 
-	return [form.elements.id.value, form.elements.title.value,
-		form.elements.author.value, form.elements.location.value];
+	return [form.elements.title.value, form.elements.author.value,
+	form.elements.location.value];
 
 }
 
 // Builds the querystring-based search url.
-function buildUrl (id, title, author, location) {
-	return `/edit/${id}?title=${title}&author=${author}&location=${location}`;
+function buildUrl (title, author, location) {
+	return `/new_item?title=${title}&author=${author}&location=${location}`;
 }
 
 // Handles form submit event and displays results.
@@ -56,7 +56,7 @@ function setupEvents () {
 		jsonPost(url, function (success, result) {
 
 			if (success) {
-				window.location = `/book/${result}`;
+				window.location = `/item/${result}`;
 			} else {
 				errMessage.textContent = result;
 			}

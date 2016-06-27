@@ -1,0 +1,10 @@
+<ul class="list">
+	{% for item in items %}
+		<a href="/item/{{ item['id'] }}">
+			<li>
+				<div class="item-title">{{ item['title'] }}</div>
+				<div class="item-author">by {{ item['author'] }}</div>
+			</li>
+		</a>
+	{% endfor %}
+</ul>

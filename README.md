@@ -1,6 +1,6 @@
-# Book DB
+# Around the House
 
-A simple database-backed, web UI for keeping track of book locations in a household. It's built against Python 3.5 and based on the Flask web framework. Testing is managed with Nose.
+A simple database-backed, web UI for keeping track of media in a household, i.e. books, DVDs, music and so on. It's built against Python 3.5 and based on the Flask web framework. Testing is managed with Nose.
 
 ## Install
 

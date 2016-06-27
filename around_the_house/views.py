@@ -2,8 +2,8 @@
 
 from flask import render_template, abort, request
 
-from book_db import app
-import book_db.models as models
+from around_the_house import app
+import around_the_house.models as models
 
 
 # ----- Routes ----- #
@@ -22,50 +22,50 @@ def search():
 	"""Retrieves html fragment of search results."""
 
 	terms = request.args.get('terms')
-	books = models.search(terms)
+	items = models.search(terms)
 
-	return render_template('list.html', books=books)
+	return render_template('list.html', items=items)
 
 
-@app.route('/book/<id>')
-def book(id):
+@app.route('/item/<id>')
+def item(id):
 
-	"""Displays information about a book with a given id."""
+	"""Displays information about a item with a given id."""
 
-	book_data = models.book(id)
+	item_data = models.item(id)
 
-	if book_data:
-		return render_template('book.html', **book_data)
+	if item_data:
+		return render_template('item.html', **item_data)
 	else:
 		abort(404)
 
 
-@app.route('/new_book', methods=['GET', 'POST'])
-def new_book():
+@app.route('/new_item', methods=['GET', 'POST'])
+def new_item():
 
-	"""Allows the user to add a new book."""
+	"""Allows the user to add a new item."""
 
 	if request.method == 'GET':
-		return render_template('new_book.html')
+		return render_template('new_item.html')
 	elif request.method == 'POST':
 
 		fields = [request.args.get(f) for f in ('title', 'author', 'location')]
-		book_id = models.new_book(*fields)
+		item_id = models.new_item(*fields)
 
-		return str(book_id), 201
+		return str(item_id), 201
 
 
 @app.route('/edit/<id>', methods=['GET', 'PUT'])
 def edit(id):
 
-	"""Allows the user to edit a specific book."""
+	"""Allows the user to edit a specific item."""
 
 	if request.method == 'GET':
 
-		book_data = models.book(id)
+		item_data = models.item(id)
 
-		if book_data:
-			return render_template('edit.html', **book_data)
+		if item_data:
+			return render_template('edit.html', **item_data)
 		else:
 			abort(404)
 
@@ -80,7 +80,7 @@ def edit(id):
 @app.route('/delete/<id>', methods=['DELETE'])
 def delete(id):
 
-	"""Deletes a given book by id."""
+	"""Deletes a given item by id."""
 
 	models.delete(id)
 

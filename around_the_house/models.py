@@ -9,44 +9,44 @@ import re
 DB_FILE = 'db.json'
 
 db = TinyDB(DB_FILE)
-Book = Query()
+Item = Query()
 
 
 # ----- Model Functions ----- #
 
-def book(id):
+def item(id):
 
-	"""Retrieves a book with given id."""
+	"""Retrieves an item with a given id."""
 
-	book_data = db.get(eid=int(id))
-	book_data['id'] = book_data.eid
+	item_data = db.get(eid=int(id))
+	item_data['id'] = item_data.eid
 
-	return book_data
+	return item_data
 
 
 def search(terms):
 
-	"""Searches and returns all books matching given search terms."""
+	"""Searches and returns all items matching given search terms."""
 
 	query = lambda s: re.search(terms, s, re.IGNORECASE)
-	result = db.search(Book.title.test(query) | Book.author.test(query))
+	result = db.search(Item.title.test(query) | Item.author.test(query))
 
-	for item in result:
-		item['id'] = item.eid
+	for record in result:
+		record['id'] = record.eid
 
 	return result
 
 
-def new_book(title, author, location):
+def new_item(title, author, location):
 
-	"""Adds a new book to the database and returns its id."""
+	"""Adds a new item to the database and returns its id."""
 
 	return db.insert({'title': title, 'author': author, 'location': location})
 
 
 def edit(id, title, author, location):
 
-	"""Updates the data on a given book by id."""
+	"""Updates the data on a given item by id."""
 
 	db.update({'title': title, 'author': author, 'location': location},
 		eids=[int(id)])
@@ -54,6 +54,6 @@ def edit(id, title, author, location):
 
 def delete(id):
 
-	"""Deletes a book by id."""
+	"""Deletes an item by id."""
 
 	db.remove(eids=[int(id)])
