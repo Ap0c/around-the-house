@@ -21,11 +21,11 @@ class TestModels(unittest.TestCase):
 
 	def setUp(self):
 
-		models.db = models.Database('test.db', models.DB_SCHEMA)
+		models.db = models.TinyDB('test.json')
 
 	def tearDown(self):
 
-		models.db.query('DELETE FROM items')
+		models.db.purge_tables()
 
 	def test_new_item(self):
 
@@ -42,7 +42,7 @@ class TestModels(unittest.TestCase):
 		item = models.item(item_id)
 
 		self.assertIsNotNone(item)
-		self.assertEqual(item['docid'], item_id)
+		self.assertEqual(item['id'], item_id)
 		self.assertEqual(item['title'], title)
 		self.assertEqual(item['author'], author)
 		self.assertEqual(item['location'], location)
@@ -61,7 +61,7 @@ class TestModels(unittest.TestCase):
 		item_id = mock_item(title='Dummy Title', author='Made Up Author')[0]
 
 		item = models.search('Dummy')[0]
-		self.assertEqual(item['docid'], item_id)
+		self.assertEqual(item['id'], item_id)
 
 	def test_search_author(self):
 
@@ -70,7 +70,7 @@ class TestModels(unittest.TestCase):
 		item_id = mock_item(title='Dummy Title', author='Made Up Author')[0]
 
 		item = models.search('Made')[0]
-		self.assertEqual(item['docid'], item_id)
+		self.assertEqual(item['id'], item_id)
 
 	def test_edit(self):
 

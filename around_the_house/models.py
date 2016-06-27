@@ -19,7 +19,9 @@ def item(id):
 	"""Retrieves an item with a given id."""
 
 	item_data = db.get(eid=int(id))
-	item_data['id'] = item_data.eid
+
+	if item_data:
+		item_data['id'] = item_data.eid
 
 	return item_data
 

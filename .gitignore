@@ -1,7 +1,7 @@
 *.DS_Store
 *.pyc
 book-env/*
-*.db
 cover/*
 .coverage
 db.json
+test.json
