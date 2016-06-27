@@ -3,7 +3,7 @@
 from flask import render_template, abort, request
 
 from book_db import app
-import book_db.tiny_models as models
+import book_db.models as models
 
 
 # ----- Routes ----- #
