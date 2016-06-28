@@ -71,8 +71,8 @@ def edit(id):
 
 	elif request.method == 'PUT':
 
-		fields = [request.args.get(f) for f in ('title', 'author', 'location')]
-		models.edit(id, *fields)
+		fields = request.get_json()
+		models.edit(fields)
 
 		return id, 200
 

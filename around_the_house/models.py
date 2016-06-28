@@ -47,12 +47,14 @@ def new_item(item_data):
 	return db.insert(item_data)
 
 
-def edit(id, title, author, location):
+def edit(item_data):
 
 	"""Updates the data on a given item by id."""
 
-	db.update({'title': title, 'author': author, 'location': location},
-		eids=[int(id)])
+	id = int(item_data['id'])
+	item_data.pop('id', None)
+
+	db.update(item_data, eids=[id])
 
 
 def delete(id):
