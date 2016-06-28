@@ -6,35 +6,11 @@ var form = document.getElementById('item-form');
 
 // ----- Functions ----- //
 
-// Posts JSON data to a specified route, and fires callback with result.
-function jsonPost (route, callback) {
-
-	var ajaxRequest = new XMLHttpRequest();
-
-	ajaxRequest.onreadystatechange = function ajaxChange () {
-
-		if (ajaxRequest.readyState == XMLHttpRequest.DONE) {
-
-			if (ajaxRequest.status === 201) {
-				callback(true, ajaxRequest.responseText);
-			} else {
-				callback(err);
-			}
-
-		}
-
-	};
-
-	ajaxRequest.open('POST', route);
-	ajaxRequest.send();
-
-}
-
 // Retrieves the item data from the form.
 function getFields () {
 
 	return [form.elements.title.value, form.elements.author.value,
-	form.elements.location.value];
+		form.elements.location.value];
 
 }
 
@@ -51,9 +27,13 @@ function setupEvents () {
 		event.preventDefault();
 
 		var fields = getFields();
-		var url = buildUrl(...fields);
+		var requestParams = {
+			route: buildUrl(...fields),
+			method: 'POST',
+			expectedStatus: 201
+		};
 
-		jsonPost(url, function (success, result) {
+		ajax(requestParams, function (success, result) {
 
 			if (success) {
 				window.location = `/item/${result}`;

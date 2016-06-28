@@ -9,5 +9,7 @@
 	<a href="/edit/{{ id }}">Edit</a>
 	<a href="/delete/{{ id }}" id="delete-link">Delete</a>
 </section>
-<script type="text/javascript" src="/static/delete.js"></script>
 {% endblock content %}
+{% block scripts %}
+	<script type="text/javascript" src="/static/delete.js"></script>
+{% endblock scripts %}

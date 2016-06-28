@@ -7,31 +7,6 @@ var form = document.getElementById('search-form');
 
 // ----- Functions ----- //
 
-// Gets JSON data from a specified route, and fires callback with result.
-function jsonGet (route, callback) {
-
-	var ajaxRequest = new XMLHttpRequest();
-
-	ajaxRequest.onreadystatechange = function ajaxChange () {
-
-		if (ajaxRequest.readyState == XMLHttpRequest.DONE) {
-
-			if (ajaxRequest.status === 200) {
-				callback(ajaxRequest.responseText);
-			} else {
-				alert('Internal server Error.');
-			}
-
-		}
-
-	};
-
-	ajaxRequest.open('GET', route);
-	ajaxRequest.send();
-
-}
-
-
 // Builds the querystring-based search url.
 function buildUrl (searchTerms) {
 	return `/search?terms=${searchTerms}`;
@@ -46,10 +21,20 @@ function setupEvents () {
 		event.preventDefault();
 
 		var searchTerms = searchField.value;
-		var url = buildUrl(searchTerms);
+		var requestParams = {
+			route: buildUrl(searchTerms),
+			method: 'GET',
+			expectedStatus: 200
+		};
 
-		jsonGet(url, function (results) {
-			resultsSection.innerHTML = results;
+		jsonGet(requestParams, function (success, results) {
+
+			if (success) {
+				resultsSection.innerHTML = results;
+			} else {
+				alert('Internal server Error.');
+			}
+			
 		});
 
 	});
