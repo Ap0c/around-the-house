@@ -1,6 +1,6 @@
 *.DS_Store
 *.pyc
-book-env/*
+.env/*
 cover/*
 .coverage
 db.json
