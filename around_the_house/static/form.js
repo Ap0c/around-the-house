@@ -15,7 +15,7 @@ var views = (function () {
 	var specificInputs = {
 		Book: ['author-template'],
 		Video: ['video-format-template'],
-		Music: ['artist-template', 'video-format-template'],
+		Music: ['artist-template', 'audio-format-template'],
 		Audiobook: ['author-template', 'audio-format-template']
 	};
 

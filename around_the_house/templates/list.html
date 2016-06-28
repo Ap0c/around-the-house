@@ -3,7 +3,10 @@
 		<a href="/item/{{ item['id'] }}">
 			<li>
 				<div class="item-title">{{ item['title'] }}</div>
-				<div class="item-author">by {{ item['author'] }}</div>
+				<div class="item-info">
+					{{ item['format'] }}
+					{% if item['author'] or item['artist'] %}by {{ item['author'] or item['artist'] }}{% endif %}
+				</div>
 			</li>
 		</a>
 	{% endfor %}

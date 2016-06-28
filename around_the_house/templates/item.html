@@ -3,7 +3,12 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
-<h3>by {{ author }}</h3>
+<h3>
+{{ author or artist }}{% if (author or artist) and format %},{% endif %}
+{% if format %}
+on {{ format }}
+{% endif %}
+</h3>
 <p>{{ location }}</p>
 <section class="item-buttons">
 	<a href="/edit/{{ id }}">Edit</a>

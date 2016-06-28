@@ -16,7 +16,7 @@ function buildUrl (searchTerms) {
 function responseHandler (success, result) {
 
 	if (success) {
-		resultsSection.innerHTML = results;
+		resultsSection.innerHTML = result;
 	} else {
 		alert('Internal server Error.');
 	}
