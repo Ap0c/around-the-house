@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Around the House - {{ title if edit else 'Add' }}{% endblock title %}
+
+{% block content %}
+<h1>{{ 'Edit Item' if edit else 'Add Item' }}</h1>
+<form id="item-form" {{ 'data-edit="true"' if edit }}>
+	<label for="title-input">Title</label>
+	<input id="title-input" type="text" name="title" {% if edit %}value="{{ title }}"{% endif %} />
+	<label for="author-input">Author</label>
+	<input id="author-input" type="text" name="author" {% if edit %}value="{{ author }}"{% endif %} />
+	<label for="location-input">Location</label>
+	<input id="location-input" type="text" name="location" {% if edit %}value="{{ location }}"{% endif %} />
+	{% if edit %}
+		<input type="hidden" name="id" value="{{ id }}" />
+	{% endif %}
+	<input type="submit" value="{{ 'Update' if edit else 'Add' }}" />
+</form>
+{% endblock content %}
+{% block scripts %}
+	<script type="text/javascript" src="/static/form.js"></script>
+{% endblock scripts %}

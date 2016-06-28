@@ -46,7 +46,7 @@ def new_item():
 	"""Allows the user to add a new item."""
 
 	if request.method == 'GET':
-		return render_template('new_item.html')
+		return render_template('form.html')
 	elif request.method == 'POST':
 
 		fields = request.get_json()
@@ -65,7 +65,7 @@ def edit(id):
 		item_data = models.item(id)
 
 		if item_data:
-			return render_template('edit.html', **item_data)
+			return render_template('form.html', **item_data, edit=True)
 		else:
 			abort(404)
 

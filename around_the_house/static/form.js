@@ -34,6 +34,29 @@ function responseHandler (success, result) {
 
 }
 
+// Builds the request params based on form type.
+function getParams (fields) {
+
+	if (form.dataset.edit) {
+
+		return {
+			route: `/edit/${fields.id}`,
+			method: 'PUT',
+			expectedStatus: 200
+		};
+
+	} else {
+
+		return {
+			route: '/new_item',
+			method: 'POST',
+			expectedStatus: 201
+		};
+
+	}
+
+}
+
 // Handles form submit event and displays results.
 function setupEvents () {
 
@@ -42,11 +65,7 @@ function setupEvents () {
 		event.preventDefault();
 
 		var fields = getFields();
-		var requestParams = {
-			route: '/new_item',
-			method: 'POST',
-			expectedStatus: 201
-		};
+		var requestParams = getParams(fields);
 
 		ajax(requestParams, responseHandler, fields);
 
