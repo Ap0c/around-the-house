@@ -12,6 +12,16 @@ function buildUrl (searchTerms) {
 	return `/search?terms=${searchTerms}`;
 }
 
+// Handles the ajax response.
+function responseHandler (success, result) {
+
+	if (success) {
+		resultsSection.innerHTML = results;
+	} else {
+		alert('Internal server Error.');
+	}
+
+}
 
 // Handles form submit event and displays results.
 function setupEvents () {
@@ -27,15 +37,7 @@ function setupEvents () {
 			expectedStatus: 200
 		};
 
-		ajax(requestParams, function (success, results) {
-
-			if (success) {
-				resultsSection.innerHTML = results;
-			} else {
-				alert('Internal server Error.');
-			}
-			
-		});
+		ajax(requestParams, responseHandler);
 
 	});
 
