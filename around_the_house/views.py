@@ -27,7 +27,7 @@ def search():
 	return render_template('list.html', items=items)
 
 
-@app.route('/item/<id>')
+@app.route('/item/<int:id>')
 def item(id):
 
 	"""Displays information about a item with a given id."""
@@ -55,7 +55,7 @@ def new_item():
 		return str(item_id), 201
 
 
-@app.route('/edit/<id>', methods=['GET', 'PUT'])
+@app.route('/edit/<int:id>', methods=['GET', 'PUT'])
 def edit(id):
 
 	"""Allows the user to edit a specific item."""
@@ -72,12 +72,12 @@ def edit(id):
 	elif request.method == 'PUT':
 
 		fields = request.get_json()
-		models.edit(fields)
+		models.edit(id, fields)
 
-		return id, 200
+		return str(id), 200
 
 
-@app.route('/delete/<id>', methods=['DELETE'])
+@app.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):
 
 	"""Deletes a given item by id."""

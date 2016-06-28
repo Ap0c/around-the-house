@@ -18,7 +18,7 @@ def item(id):
 
 	"""Retrieves an item with a given id."""
 
-	item_data = db.get(eid=int(id))
+	item_data = db.get(eid=id)
 
 	if item_data:
 		item_data['id'] = item_data.eid
@@ -47,12 +47,9 @@ def new_item(item_data):
 	return db.insert(item_data)
 
 
-def edit(item_data):
+def edit(id, item_data):
 
 	"""Updates the data on a given item by id."""
-
-	id = int(item_data['id'])
-	item_data.pop('id', None)
 
 	db.update(item_data, eids=[id])
 
@@ -61,4 +58,4 @@ def delete(id):
 
 	"""Deletes an item by id."""
 
-	db.remove(eids=[int(id)])
+	db.remove(eids=[id])

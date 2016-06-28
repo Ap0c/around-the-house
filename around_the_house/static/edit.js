@@ -10,7 +10,6 @@ var form = document.getElementById('item-form');
 function getFields () {
 
 	return {
-		id: form.elements.id.value,
 		title: form.elements.title.value,
 		author: form.elements.author.value,
 		location: form.elements.location.value

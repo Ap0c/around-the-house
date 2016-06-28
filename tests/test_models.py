@@ -80,9 +80,9 @@ class TestModels(unittest.TestCase):
 
 		item_id = mock_item()[0]
 
-		item_data = {'id': item_id, 'title': 'Item Two', 'author': 'Author Two',
+		item_data = {'title': 'Item Two', 'author': 'Author Two',
 			'location': 'Location Two'}
-		models.edit(item_data)
+		models.edit(item_id, item_data)
 
 		item = models.item(item_id)
 
