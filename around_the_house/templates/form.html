@@ -6,8 +6,13 @@
 <form id="item-form" {{ 'data-edit="true"' if edit }}>
 	<label for="title-input">Title</label>
 	<input id="title-input" type="text" name="title" {% if edit %}value="{{ title }}"{% endif %} />
-	<label for="author-input">Author</label>
-	<input id="author-input" type="text" name="author" {% if edit %}value="{{ author }}"{% endif %} />
+	<label for="type-input">Format</label>
+	<select id="type-input" name="type">
+		<option value="Book" selected>Book</option>
+		<option value="Video">Video</option>
+		<option value="Music">Music</option>
+		<option value="Audiobook">Audiobook</option>
+	</select>
 	<label for="location-input">Location</label>
 	<input id="location-input" type="text" name="location" {% if edit %}value="{{ location }}"{% endif %} />
 	{% if edit %}
@@ -15,6 +20,30 @@
 	{% endif %}
 	<input type="submit" value="{{ 'Update' if edit else 'Add' }}" />
 </form>
+<template id="author-template">
+	<label for="author-input">Author</label>
+	<input id="author-input" type="text" name="author" {% if edit %}value="{{ author }}"{% endif %} />
+</template>
+<template id="audio-format-template">
+	<label for="format-input">Format</label>
+	<select id="format-input" name="format">
+		<option value="CD">CD</option>
+		<option value="Cassette">Cassette</option>
+		<option value="Vinyl">Vinyl</option>
+	</select>
+</template>
+<template id="video-format-template">
+	<label for="format-input">Format</label>
+	<select id="format-input" name="format">
+		<option value="DVD">DVD</option>
+		<option value="Bluray">Bluray</option>
+		<option value="VHS">VHS</option>
+	</select>
+</template>
+<template id="artist-template">
+	<label for="artist-input">Artist</label>
+	<input id="artist-input" type="text" name="artist" {% if edit %}value="{{ artist }}"{% endif %} />
+</template>
 {% endblock content %}
 {% block scripts %}
 	<script type="text/javascript" src="/static/form.js"></script>
