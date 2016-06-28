@@ -49,8 +49,8 @@ def new_item():
 		return render_template('new_item.html')
 	elif request.method == 'POST':
 
-		fields = [request.args.get(f) for f in ('title', 'author', 'location')]
-		item_id = models.new_item(*fields)
+		fields = request.get_json()
+		item_id = models.new_item(fields)
 
 		return str(item_id), 201
 

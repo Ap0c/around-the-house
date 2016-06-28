@@ -39,11 +39,12 @@ def search(terms):
 	return result
 
 
-def new_item(title, author, location):
+def new_item(item_data):
 
 	"""Adds a new item to the database and returns its id."""
 
-	return db.insert({'title': title, 'author': author, 'location': location})
+	print(item_data)
+	return db.insert(item_data)
 
 
 def edit(id, title, author, location):
