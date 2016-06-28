@@ -9,6 +9,18 @@ var optionalInputs = document.getElementById('optional-inputs');
 
 var views = (function () {
 
+	// ----- Internal Properties ----- //
+
+	var typeInput = document.getElementById('type-input');
+	var specificInputs = {
+		Book: ['author-template'],
+		Video: ['format-template'],
+		Music: ['artist-template', 'format-template'],
+		Audiobook: ['author-template', 'format-template']
+	};
+
+	// ----- Functions ----- //
+
 	// Clears the media-type specific inputs from the form.
 	function clearOptionals () {
 
@@ -37,25 +49,17 @@ var views = (function () {
 
 	}
 
-	// Adds book-specific inputs to the form.
-	function book () {
-		addOptionals(['author-template']);
+	// Updates the fields based upon current media type selected.
+	function updateInputs () {
+
+		var type = typeInput.value;
+		addOptionals(specificInputs[type]);
+
 	}
 
-	// Adds video-specific inputs to the form.
-	function video () {
-		addOptionals(['format-template']);
-	}
+	// ----- Setup ----- //
 
-	// Adds music-specific inputs to the form.
-	function music () {
-		addOptionals(['artist-template', 'format-template']);
-	}
-
-	// Adds audioboo-specific inputs to the form.
-	function audiobook () {
-		addOptionals(['author-template', 'format-template']);
-	}
+	updateInputs();
 
 })();
 

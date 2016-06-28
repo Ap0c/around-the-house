@@ -8,10 +8,10 @@
 	<input id="title-input" type="text" name="title" {% if edit %}value="{{ title }}"{% endif %} />
 	<label for="type-input">Format</label>
 	<select id="type-input" name="type">
-		<option value="Book" selected>Book</option>
-		<option value="Video">Video</option>
-		<option value="Music">Music</option>
-		<option value="Audiobook">Audiobook</option>
+		<option value="Book" {{ 'selected' if type == 'Book' }}>Book</option>
+		<option value="Video" {{ 'selected' if type == 'Video' }}>Video</option>
+		<option value="Music" {{ 'selected' if type == 'Music' }}>Music</option>
+		<option value="Audiobook" {{ 'selected' if type == 'Audiobook' }}>Audiobook</option>
 	</select>
 	<label for="location-input">Location</label>
 	<input id="location-input" type="text" name="location" {% if edit %}value="{{ location }}"{% endif %} />
@@ -28,17 +28,17 @@
 <template id="audio-format-template">
 	<label for="format-input">Format</label>
 	<select id="format-input" name="format">
-		<option value="CD" {{ 'selected' if format is 'CD' }}>CD</option>
-		<option value="Cassette" {{ 'selected' if format is 'Cassette' }}>Cassette</option>
-		<option value="Vinyl" {{ 'selected' if format is 'Vinyl' }}>Vinyl</option>
+		<option value="CD" {{ 'selected' if format == 'CD' }}>CD</option>
+		<option value="Cassette" {{ 'selected' if format == 'Cassette' }}>Cassette</option>
+		<option value="Vinyl" {{ 'selected' if format == 'Vinyl' }}>Vinyl</option>
 	</select>
 </template>
 <template id="video-format-template">
 	<label for="format-input">Format</label>
 	<select id="format-input" name="format">
-		<option value="DVD" {{ 'selected' if format is 'DVD' }}>DVD</option>
-		<option value="Bluray" {{ 'selected' if format is 'Bluray' }}>Bluray</option>
-		<option value="VHS" {{ 'selected' if format is 'VHS' }}>VHS</option>
+		<option value="DVD" {{ 'selected' if format == 'DVD' }}>DVD</option>
+		<option value="Bluray" {{ 'selected' if format == 'Bluray' }}>Bluray</option>
+		<option value="VHS" {{ 'selected' if format == 'VHS' }}>VHS</option>
 	</select>
 </template>
 <template id="artist-template">
