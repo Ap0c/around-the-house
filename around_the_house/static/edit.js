@@ -9,11 +9,17 @@ var form = document.getElementById('item-form');
 // Retrieves the item data from the form.
 function getFields () {
 
-	return {
-		title: form.elements.title.value,
-		author: form.elements.author.value,
-		location: form.elements.location.value
-	};
+	return Array.from(form.elements).reduce(gatherFields, {});
+
+	function gatherFields (fields, field) {
+
+		if (field.name) {
+			fields[field.name] = field.value;
+		}
+
+		return fields;
+
+	}
 
 }
 

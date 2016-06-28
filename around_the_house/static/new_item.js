@@ -9,11 +9,17 @@ var form = document.getElementById('item-form');
 // Retrieves the item data from the form.
 function getFields () {
 
-	return {
-		title: form.elements.title.value,
-		author: form.elements.author.value,
-		location: form.elements.location.value
-	};
+	return Array.from(form.elements).reduce(gatherFields, {});
+
+	function gatherFields (fields, field) {
+
+		if (field.name) {
+			fields[field.name] = field.value;
+		}
+
+		return fields;
+
+	}
 
 }
 
@@ -35,13 +41,14 @@ function setupEvents () {
 
 		event.preventDefault();
 
+		var fields = getFields();
 		var requestParams = {
 			route: '/new_item',
 			method: 'POST',
 			expectedStatus: 201
 		};
 
-		ajax(requestParams, responseHandler, getFields());
+		ajax(requestParams, responseHandler, fields);
 
 	});
 
