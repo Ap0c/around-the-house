@@ -2,6 +2,62 @@
 
 var errMessage = document.getElementById('err-message');
 var form = document.getElementById('item-form');
+var optionalInputs = document.getElementById('optional-inputs');
+
+
+// ----- Form Views ----- //
+
+var views = (function () {
+
+	// Clears the media-type specific inputs from the form.
+	function clearOptionals () {
+
+		while (optionalInputs.firstChild) {
+			optionalInputs.removeChild(optionalInputs.firstChild);
+		}
+
+	}
+
+	// Adds media-type specific inputs to the form.
+	function addOptionals (inputs) {
+
+		var docFrag = document.createDocumentFragment();
+
+		inputs.forEach(function (input) {
+
+			var template = document.getElementById(input);
+			var element = document.importNode(template.content, true);
+
+			docFrag.appendChild(element);
+
+		});
+
+		clearOptionals();
+		optionalInputs.appendChild(docFrag);
+
+	}
+
+	// Adds book-specific inputs to the form.
+	function book () {
+		addOptionals(['author-template']);
+	}
+
+	// Adds video-specific inputs to the form.
+	function video () {
+		addOptionals(['format-template']);
+	}
+
+	// Adds music-specific inputs to the form.
+	function music () {
+		addOptionals(['artist-template', 'format-template']);
+	}
+
+	// Adds audioboo-specific inputs to the form.
+	function audiobook () {
+		addOptionals(['author-template', 'format-template']);
+	}
+
+})();
 
 
 // ----- Functions ----- //

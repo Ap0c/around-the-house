@@ -18,6 +18,7 @@
 	{% if edit %}
 		<input type="hidden" name="id" value="{{ id }}" />
 	{% endif %}
+	<section id="optional-inputs"></section>
 	<input type="submit" value="{{ 'Update' if edit else 'Add' }}" />
 </form>
 <template id="author-template">
@@ -27,17 +28,17 @@
 <template id="audio-format-template">
 	<label for="format-input">Format</label>
 	<select id="format-input" name="format">
-		<option value="CD">CD</option>
-		<option value="Cassette">Cassette</option>
-		<option value="Vinyl">Vinyl</option>
+		<option value="CD" {{ 'selected' if format is 'CD' }}>CD</option>
+		<option value="Cassette" {{ 'selected' if format is 'Cassette' }}>Cassette</option>
+		<option value="Vinyl" {{ 'selected' if format is 'Vinyl' }}>Vinyl</option>
 	</select>
 </template>
 <template id="video-format-template">
 	<label for="format-input">Format</label>
 	<select id="format-input" name="format">
-		<option value="DVD">DVD</option>
-		<option value="Bluray">Bluray</option>
-		<option value="VHS">VHS</option>
+		<option value="DVD" {{ 'selected' if format is 'DVD' }}>DVD</option>
+		<option value="Bluray" {{ 'selected' if format is 'Bluray' }}>Bluray</option>
+		<option value="VHS" {{ 'selected' if format is 'VHS' }}>VHS</option>
 	</select>
 </template>
 <template id="artist-template">
