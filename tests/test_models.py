@@ -10,7 +10,9 @@ def mock_item(title='Item One', author='Author One', location='Location One'):
 
 	"""Creates a mocked item in the database."""
 
-	return models.new_item(title, author, location), title, author, location
+	item_data = {'title': title, 'author': author, 'location': location}
+
+	return models.new_item(item_data), title, author, location
 
 
 # ----- Tests ----- #
@@ -76,16 +78,17 @@ class TestModels(unittest.TestCase):
 
 		"""Makes sure an item is edited correctly."""
 
-		item_id, title, author, location = mock_item()
+		item_id = mock_item()[0]
 
-		title, author, location = 'Item Two', 'Author Two', 'Location Two'
-		models.edit(item_id, title, author, location)
+		item_data = {'id': item_id, 'title': 'Item Two', 'author': 'Author Two',
+			'location': 'Location Two'}
+		models.edit(item_data)
 
 		item = models.item(item_id)
 
-		self.assertEqual(item['title'], title)
-		self.assertEqual(item['author'], author)
-		self.assertEqual(item['location'], location)
+		self.assertEqual(item['title'], item_data['title'])
+		self.assertEqual(item['author'], item_data['author'])
+		self.assertEqual(item['location'], item_data['location'])
 
 	def test_delete(self):
 
