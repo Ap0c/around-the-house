@@ -27,7 +27,7 @@ function setupEvents () {
 			expectedStatus: 200
 		};
 
-		jsonGet(requestParams, function (success, results) {
+		ajax(requestParams, function (success, results) {
 
 			if (success) {
 				resultsSection.innerHTML = results;
