@@ -14,9 +14,9 @@ var views = (function () {
 	var typeInput = document.getElementById('type-input');
 	var specificInputs = {
 		Book: ['author-template'],
-		Video: ['format-template'],
-		Music: ['artist-template', 'format-template'],
-		Audiobook: ['author-template', 'format-template']
+		Video: ['video-format-template'],
+		Music: ['artist-template', 'video-format-template'],
+		Audiobook: ['author-template', 'audio-format-template']
 	};
 
 	// ----- Functions ----- //
@@ -60,6 +60,7 @@ var views = (function () {
 	// ----- Setup ----- //
 
 	updateInputs();
+	typeInput.addEventListener('change', updateInputs);
 
 })();
 
