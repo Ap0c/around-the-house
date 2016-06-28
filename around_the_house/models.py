@@ -31,7 +31,8 @@ def search(terms):
 	"""Searches and returns all items matching given search terms."""
 
 	query = lambda s: re.search(terms, s, re.IGNORECASE)
-	result = db.search(Item.title.test(query) | Item.author.test(query))
+	result = db.search(Item.title.test(query) | Item.author.test(query) |
+		Item.artist.test(query))
 
 	for record in result:
 		record['id'] = record.eid
