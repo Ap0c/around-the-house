@@ -1,0 +1,13 @@
+[Unit]
+Description=Around The House
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/around-the-house
+Environment="PATH=/home/pi/around-the-house/around-the-house-env/bin"
+ExecStart=/home/pi/around-the-house/around-the-house-env/bin/python run.py
+
+[Install]
+WantedBy=multi-user.target
