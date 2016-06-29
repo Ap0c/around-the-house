@@ -65,7 +65,10 @@ def edit(id):
 		item_data = models.item(id)
 
 		if item_data:
-			return render_template('form.html', **item_data, edit=True)
+
+			item_data['edit'] = True
+			return render_template('form.html', **item_data)
+
 		else:
 			abort(404)
 
